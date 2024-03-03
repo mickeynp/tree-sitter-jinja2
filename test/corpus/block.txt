@@ -1,0 +1,57 @@
+==============
+ Simple block
+==============
+
+{% block foo %}
+
+---
+    (fragment
+      (fragment_statement
+        (statement
+          (block_statement
+            (identifier)))))
+
+
+
+==============
+ Required block
+==============
+
+{% block foo required %}
+
+---
+    (fragment
+      (fragment_statement
+        (statement
+          (block_statement
+            (identifier)
+            (required_block)))))
+
+
+==============
+ Scoped block
+==============
+
+{% block bar scoped %}
+
+---
+    (fragment
+      (fragment_statement
+        (statement
+          (block_statement
+            (identifier)
+            (scoped_block)))))
+
+
+================
+ Named endblock
+================
+
+{% endblock foo %}
+
+---
+    (fragment
+      (fragment_statement
+        (statement
+          (endblock_statement
+            (identifier)))))

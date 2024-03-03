@@ -1,0 +1,35 @@
+
+==========================
+ With without assignments
+==========================
+
+{% with %}
+
+---
+(fragment
+      (fragment_statement
+        (statement
+          (with_statement))))
+
+
+==========================
+ With with several assignments
+==========================
+
+{% with bar = "foo", biz=1+1, %}
+
+---
+(fragment
+      (fragment_statement
+        (statement
+          (with_statement
+            (assignment
+              (identifier)
+              (expression
+                (string)))
+            (assignment
+              (identifier)
+              (expression
+                (binary_operator
+                  (integer)
+                  (integer))))))))

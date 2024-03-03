@@ -1,0 +1,89 @@
+
+======================
+ Simple Equality Test
+======================
+
+{{ a == 1 }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (comparison_operator
+            (identifier)
+            (integer)))))
+
+======================
+ Test call without args
+======================
+
+{{ a is defined }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (test_operator
+             (identifier)
+             (unary_call (identifier))))))
+
+
+==================================
+ Test single arg call without brackets
+==================================
+
+{{ a is divisibleby 3 }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (test_operator
+            (identifier)
+            (unary_call
+              (identifier)
+              (unary_argument_list
+                (expression
+                  (integer))))))))
+
+==================================
+ Test single arg call with brackets
+==================================
+
+{{ a is divisibleby(3) }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (test_operator
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (expression
+                  (integer))))))))
+
+==================================
+ Test multiple arg call without brackets (error)
+==================================
+
+{{ a is divisibleby 3 4 }}
+
+---
+(fragment
+      (fragment_expression
+        (expression
+          (test_operator
+            (identifier)
+            (unary_call
+              (identifier)
+              (unary_argument_list
+                (expression
+                  (integer))))))
+        (ERROR
+          (integer))))

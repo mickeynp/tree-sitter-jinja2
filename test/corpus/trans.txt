@@ -1,0 +1,44 @@
+
+==========================
+ Translation with Trimmed
+==========================
+
+{% trans trimmed %}
+
+---
+(fragment
+      (fragment_statement
+        (statement
+          (trans_statement))))
+
+==========================
+ Translation with assignment
+==========================
+
+{% trans bar = "foo", %}
+
+---
+(fragment
+      (fragment_statement
+        (statement
+          (trans_statement
+            (assignment
+              (identifier)
+              (expression
+                (string)))))))
+
+===========
+ Pluralize
+===========
+
+{% pluralize foo %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (pluralize_statement
+            (identifier)))))
+
+

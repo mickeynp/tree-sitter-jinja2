@@ -1,0 +1,83 @@
+
+==============
+ Basic Filter
+==============
+
+{{ foo|title }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (filter_operator
+            (identifier)
+            (identifier)))))
+
+===========================
+ Chained Filter with Calls
+===========================
+
+{{ foo|bar|baz("foo")|biz(1, 2, 3) }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (call
+            (filter_operator
+              (call
+                (filter_operator
+                  (identifier)
+                  (filter_operator
+                    (identifier)
+                    (identifier)))
+                (argument_list
+                  (expression
+                    (string))))
+              (identifier))
+            (argument_list
+              (expression
+                (integer))
+              (expression
+                (integer))
+              (expression
+                (integer)))))))
+
+=======================================
+ Proper Filter Precedence (no bracket)
+=======================================
+
+{{ "a" + "b" | title }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (binary_operator
+            (string)
+            (filter_operator
+              (string)
+              (identifier))))))
+
+
+=======================================
+ Proper Filter Precedence (concat first)
+=======================================
+
+{{ ("a" + "b") | title }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (filter_operator
+            (parenthesized_expression
+              (expression
+                (binary_operator
+                  (string)
+                  (string))))
+            (identifier)))))

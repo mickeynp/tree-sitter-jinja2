@@ -1,0 +1,17 @@
+
+==============
+ Do statement
+==============
+
+{% do 1 + 1 %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (do_statement
+            (expression
+              (binary_operator
+                (integer)
+                (integer)))))))

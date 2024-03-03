@@ -1,0 +1,121 @@
+
+=================
+ Simple Addition
+=================
+
+{{ 1 + 1 }}
+
+---
+
+(fragment
+ (fragment_expression
+   (expression
+    (binary_operator
+            (integer)
+            (integer)))))
+
+
+========================
+ Associative Arithmetic
+========================
+
+{{ 1 + 2 + 3 }}
+
+---
+
+(fragment
+ (fragment_expression
+   (expression
+    (binary_operator
+            (binary_operator
+              (integer)
+              (integer))
+            (integer)))))
+
+======================================
+ Right-associative for Multiplication
+======================================
+
+{{ 1 + 2 * 3 }}
+
+---
+
+(fragment
+ (fragment_expression
+   (expression
+    (binary_operator
+            (integer)
+            (binary_operator
+              (integer)
+              (integer))))))
+
+
+
+==============================================
+ Boolean are lower precedence than arithmetic
+==============================================
+
+{{ 1 + 2 == 2 + 1 }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (comparison_operator
+            (binary_operator
+              (integer)
+              (integer))
+            (binary_operator
+              (integer)
+              (integer))))))
+
+==============================================
+ Boolean Unary Not
+==============================================
+
+{{ not True }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (not_operator
+            (expression
+              (true))))))
+
+==============================================
+ Boolean Unary Not with Expression
+==============================================
+
+{{ not 1 + 1 == 2 }}
+
+---
+(fragment
+      (fragment_expression
+        (expression
+          (not_operator
+            (expression
+              (comparison_operator
+                (binary_operator
+                  (integer)
+                  (integer))
+                (integer)))))))
+
+==========
+ Coalesce
+==========
+
+{{ "a" ~ "b" | title }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (coalesce_operator
+            (string)
+            (filter_operator
+              (string)
+              (identifier))))))

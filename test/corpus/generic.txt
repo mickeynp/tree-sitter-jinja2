@@ -1,0 +1,28 @@
+
+===================
+ Generic Statement
+===================
+
+{% assets filters="jsmin", output="gen/packed.js",
+          "common/jquery.js", "site/base.js", "site/widgets.js" %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (identifier)
+          (keyword_argument
+            (identifier)
+            (expression
+              (string)))
+          (keyword_argument
+            (identifier)
+            (expression
+              (string)))
+          (expression
+            (string))
+          (expression
+            (string))
+          (expression
+            (string)))))

@@ -1,0 +1,148 @@
+========================
+ String Escape Quote
+========================
+
+{{ 'foo\' bar' }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+
+========================
+ Integer (with trimmers)
+========================
+
+{{+ 1234 -}}
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(integer))))
+
+
+========================
+ String (with trimmers)
+========================
+
+{{+ "foo bar" -}}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+========================
+ String Single Quote
+========================
+
+{{ 'foo bar' }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+
+
+==============================================
+ String Single Quote with Double Quote Inside
+==============================================
+
+{{ 'foo" bar' }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+
+
+
+=====================
+ String (no spacing)
+=====================
+
+{{"foo bar"}}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+
+=================
+ String (simple)
+=================
+
+{{ "foo bar" }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(string))))
+
+===========
+ Constants
+===========
+
+{{ true }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(true))))
+
+=========================
+ Constants (Capitalised)
+=========================
+
+{{ True }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(true))))
+
+=========================
+ Constants (Invalid)
+=========================
+
+{{ foo }}
+
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (identifier))))
+
+

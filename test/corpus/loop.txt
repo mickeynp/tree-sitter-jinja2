@@ -1,0 +1,76 @@
+
+================
+ Basic for loop
+================
+
+{% for x in y %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (for_statement
+            (identifier)
+            (expression
+              (identifier))))))
+
+=========================
+ for loop with condition
+=========================
+
+{% for x in y if x > 5 %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (for_statement
+            (identifier)
+            (expression
+              (identifier))
+            (if_clause
+              (expression
+                (comparison_operator
+                  (identifier)
+                  (integer))))))))
+
+=========================
+ for loop with recursive
+=========================
+
+{% for x in y recursive %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (for_statement
+            (identifier)
+            (expression
+              (identifier))
+            (for_recursive)))))
+
+=============================
+ for loop with destructuring
+=============================
+
+{% for x, y in d.items() %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (for_statement
+            (pattern_list
+              (identifier)
+              (identifier))
+            (expression
+              (call
+                (attribute
+                  (identifier)
+                  (identifier))
+                (argument_list)))))))

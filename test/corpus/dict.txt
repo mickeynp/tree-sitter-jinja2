@@ -1,0 +1,51 @@
+============
+ Dictionary
+============
+
+{{ {'a': 1} }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (dictionary
+           (pair (expression (string)) (expression (integer)))))))
+
+=====================
+ Dictionary, Complex
+=====================
+
+{{ {'a': 1,
+    (1, 2): {"1": [1, 2]}
+   }}}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (dictionary
+            (pair
+              (expression
+                (string))
+              (expression
+                (integer)))
+            (pair
+              (expression
+                (tuple
+                  (expression
+                    (integer))
+                  (expression
+                    (integer))))
+              (expression
+                (dictionary
+                  (pair
+                    (expression
+                      (string))
+                    (expression
+                      (list
+                        (expression
+                          (integer))
+                        (expression
+                          (integer))))))))))))

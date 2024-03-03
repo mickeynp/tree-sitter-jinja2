@@ -1,0 +1,37 @@
+================
+ Simple extends
+================
+
+{% extends "foo.html" %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (extends_statement
+            (expression
+              (string))))))
+
+================
+ Complex extends
+================
+
+{% extends "foo.html" if value == 42 else "bar.html" %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (extends_statement
+            (expression
+              (conditional_expression
+                (expression
+                  (string))
+                (expression
+                  (comparison_operator
+                    (identifier)
+                    (integer)))
+                (expression
+                  (string))))))))

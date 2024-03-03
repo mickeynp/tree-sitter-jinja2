@@ -1,0 +1,85 @@
+
+=====================
+ Simple if statement
+=====================
+
+{% if a == 1 %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (if_statement
+            condition: (expression
+              (comparison_operator
+                (identifier)
+                (integer)))))))
+
+=====================
+ Complex if statement
+=====================
+
+{% if a == (add2(4) + 3) %}
+
+---
+
+
+    (fragment
+      (fragment_statement
+        (statement
+          (if_statement
+            condition: (expression
+              (comparison_operator
+                (identifier)
+                (parenthesized_expression
+                  (expression
+                    (binary_operator
+                      left: (call
+                        function: (identifier)
+                        arguments: (argument_list
+                          (expression
+                            (integer))))
+                      right: (integer))))))))))
+
+================
+ Elif statement
+================
+
+{% elif foo %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (elif_statement
+            (expression
+              (identifier))))))
+
+===============================
+ Complex if with test operator
+===============================
+
+{% if loop.previtem is defined and value > loop.previtem %}
+
+---
+    (fragment
+      (fragment_statement
+        (statement
+          (if_statement
+            (expression
+              (boolean_operator
+                (expression
+                  (test_operator
+                    (attribute
+                      (identifier)
+                      (identifier))
+                    (unary_call
+                      (identifier))))
+                (expression
+                  (comparison_operator
+                    (identifier)
+                    (attribute
+                      (identifier)
+                      (identifier))))))))))

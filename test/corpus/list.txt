@@ -1,0 +1,108 @@
+=========================
+ List w/o trailing comma
+=========================
+
+{{ [1, 2, 3] }}
+
+---
+
+   (fragment
+      (fragment_expression
+        (expression
+          (list
+            (expression
+              (integer))
+            (expression
+              (integer))
+            (expression
+              (integer))))))
+
+=========================
+ List w/ trailing comma
+=========================
+
+{{ [1, 2, 3,] }}
+
+---
+
+   (fragment
+      (fragment_expression
+        (expression
+          (list
+            (expression
+              (integer))
+            (expression
+              (integer))
+            (expression
+              (integer))))))
+
+=========================
+ List missing a comma
+=========================
+
+{{ [1 2] }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (list
+            (expression
+              (integer))
+            (ERROR
+              (integer))))))
+
+=================================
+ List nested with mixed elements
+=================================
+
+{{ [1, [1, "two"], []] }}
+
+---
+    (fragment
+      (fragment_expression
+        (expression
+          (list
+            (expression
+              (integer))
+            (expression
+              (list
+                (expression
+                  (integer))
+                (expression
+                  (string))))
+            (expression
+              (list))))))
+
+=================================
+ Complex multiline expression
+=================================
+
+{{ [1,
+
+[1     ,
+
+
+"two"], [
+
+
+
+
+]] }}
+
+---
+    (fragment
+      (fragment_expression
+        (expression
+          (list
+            (expression
+              (integer))
+            (expression
+              (list
+                (expression
+                  (integer))
+                (expression
+                  (string))))
+            (expression
+              (list))))))

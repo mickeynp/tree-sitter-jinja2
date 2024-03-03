@@ -1,0 +1,110 @@
+=========================
+ Tuple w/o trailing comma
+=========================
+
+{{ (1, 2, 3) }}
+
+---
+
+   (fragment
+      (fragment_expression
+        (expression
+          (tuple
+            (expression
+              (integer))
+            (expression
+              (integer))
+            (expression
+              (integer))))))
+
+=========================
+ Tuple w/ trailing comma
+=========================
+
+{{ (1, 2, 3,) }}
+
+---
+
+   (fragment
+      (fragment_expression
+        (expression
+          (tuple
+            (expression
+              (integer))
+            (expression
+              (integer))
+            (expression
+              (integer))))))
+
+=========================
+ Tuple missing a comma
+=========================
+
+{{ (1 2) }}
+
+---
+
+   (fragment
+      (fragment_expression
+        (expression
+          (parenthesized_expression
+            (expression
+              (integer))
+            (ERROR
+              (integer))))))
+
+=================================
+ Tuple nested with mixed elements
+=================================
+
+{{ (1, (1, "two"), ()) }}
+
+---
+    (fragment
+      (fragment_expression
+        (expression
+          (tuple
+            (expression
+              (integer))
+            (expression
+              (tuple
+                (expression
+                  (integer))
+                (expression
+                  (string))))
+            (expression
+              (tuple))))))
+
+=================================
+ Complex multiline expression
+=================================
+
+{{ (1,
+
+(1     ,
+
+
+"two"), (
+
+
+
+
+)) }}
+
+---
+    (fragment
+      (fragment_expression
+        (expression
+          (tuple
+            (expression
+              (integer))
+            (expression
+              (tuple
+                (expression
+                  (integer))
+                (expression
+                  (string))))
+            (expression
+              (tuple))))))
+
+

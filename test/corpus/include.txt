@@ -1,0 +1,93 @@
+===============
+ Basic Include
+===============
+
+{% include 'header.html' %}
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (include_statement
+           (expression
+            (string))))))
+
+========================
+ Include ignore missing
+========================
+{% include "sidebar.html" ignore missing %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (include_statement
+            (expression
+              (string))
+            (ignore_missing)))))
+
+
+========================================
+ Include ignore missing without context
+========================================
+
+{% include "sidebar.html" ignore missing without context %}
+
+---
+
+
+    (fragment
+      (fragment_statement
+        (statement
+          (include_statement
+            (expression
+              (string))
+            (ignore_missing)
+            (without_context)))))
+
+
+===================================================
+ Include with 'ignore missing' the wrong way round
+===================================================
+
+{% include "sidebar.html"  without context ignore missing %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (ERROR
+          (statement
+            (include_statement
+              (expression
+                (string))
+              (without_context))))
+        (statement
+          (identifier)
+          (expression
+            (identifier)))))
+
+=========================
+ Include with expression
+=========================
+
+{% include "foo.html" if some_var is defined else 'default.html' %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (include_statement
+           (expression
+            (conditional_expression
+              (expression
+                (string))
+              (expression
+                (test_operator
+                  (identifier)
+                  (unary_call
+                    (identifier))))
+              (expression
+                (string))))))))

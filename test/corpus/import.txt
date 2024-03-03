@@ -1,0 +1,72 @@
+
+==================
+ Simple import as
+==================
+
+{% import 'foo.html' as bar %}
+
+---
+
+(fragment
+  (fragment_statement
+    (statement
+    (import_statement
+      template: (string)
+      alias: (identifier)))))
+
+=====================
+ Import with Context
+=====================
+
+{% import 'foo.html' as bar with context %}
+
+---
+
+(fragment
+  (fragment_statement
+    (statement
+    (import_statement
+      template: (string)
+      alias: (identifier))
+    (with_context))))
+
+
+
+======================================
+ from import with import and aliasing
+======================================
+
+{% from 'foo.html' import biz, baz as buzz %}
+
+---
+
+(fragment
+      (fragment_statement
+        (statement
+          (import_from_statement
+            template: (string)
+            (identifier)
+            (aliased_import
+              name: (dotted_name
+                (identifier))
+              alias: (identifier))))))
+
+============================
+ Simple import as (Invalid)
+============================
+
+{% import not.a.string as bar %}
+
+---
+
+(fragment
+      (fragment_statement
+        (ERROR
+          (identifier)
+          (identifier))
+        (statement
+          (identifier)
+          (ERROR
+            (identifier))
+          (expression
+            (identifier)))))

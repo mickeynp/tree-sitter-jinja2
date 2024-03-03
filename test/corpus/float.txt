@@ -1,0 +1,43 @@
+=========
+ Float
+=========
+
+{{ 1.0 }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(float))))
+
+==========================
+ Float with only exponent
+==========================
+
+{{ .23 }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(float))))
+
+
+
+================================
+ Float with scientific notation
+================================
+
+{{ 1.1e2 }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(float))))

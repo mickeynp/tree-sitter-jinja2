@@ -1,0 +1,68 @@
+==============================
+ Comment with nested hash tag
+==============================
+
+{#
+comment #
+#}
+
+---
+
+(fragment
+  (fragment_comment (comment)))
+
+===================================
+ Comment with spaced closing chars
+===================================
+
+{#
+comment # }
+#}
+
+---
+
+(fragment
+  (fragment_comment
+    (comment)))
+
+===================================
+ Comment with invalid open
+===================================
+
+{ #
+comment  }
+#}
+
+---
+
+    (fragment
+     (ERROR
+      (UNEXPECTED '#')
+      (identifier)
+      (UNEXPECTED '#')))
+
+=========
+ Comment
+=========
+
+{#
+comment
+#}
+
+---
+
+(fragment
+  (fragment_comment (comment)))
+
+
+================================
+ Comment with expression inside
+================================
+
+{#{{ details("something") }}#}
+
+---
+
+(fragment
+      (fragment_comment
+        (comment)))

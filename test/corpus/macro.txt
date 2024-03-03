@@ -1,0 +1,84 @@
+
+=========================
+ Simple macro definition
+=========================
+
+{% macro foo(a, b, c=1) %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (macro_statement
+            (identifier)
+            (parameters
+              (identifier)
+              (identifier)
+              (default_parameter
+                (identifier)
+                (expression
+                  (integer))))))))
+
+
+============
+ Call macro
+============
+
+{% call foo() %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (call_statement
+            (call
+              (identifier)
+              (argument_list))))))
+
+
+======================
+ Call macro with args
+======================
+
+{% call foo(1, 2, "foo") %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (call_statement
+            (call
+              (identifier)
+              (argument_list
+                (expression
+                  (integer))
+                (expression
+                  (integer))
+                (expression
+                  (string))))))))
+
+================
+ Callback macro
+================
+
+{% call foo(1) bar(2) %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (callback_statement
+            (call
+              function: (identifier)
+              arguments: (argument_list
+                (expression
+                  (integer))))
+            callback: (call
+              function: (identifier)
+              arguments: (argument_list
+                (expression
+                  (integer))))))))

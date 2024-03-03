@@ -1,0 +1,56 @@
+
+==========================
+ Parenthesized Expression
+==========================
+
+{{ (1) }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (parenthesized_expression
+            (expression
+              (integer))))))
+
+
+===================================
+ Parenthesized Expression (Nested)
+===================================
+
+{{ (((1))) }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (parenthesized_expression
+            (expression
+              (parenthesized_expression
+                (expression
+                  (parenthesized_expression
+                    (expression
+                      (integer))))))))))
+
+================================================
+ Tuple inside Parenthesized Expression (Nested)
+================================================
+
+{{ (((1, 1))) }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (parenthesized_expression
+            (expression
+              (parenthesized_expression
+                (expression
+                  (tuple
+                    (expression
+                      (integer))
+                    (expression
+                      (integer))))))))))

@@ -1,0 +1,37 @@
+
+============
+ Simple set
+============
+
+{% set a = 1 %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (set_statement
+            (assignment
+              (identifier)
+              (expression
+                (integer)))))))
+
+
+========================
+ Simple set with filter
+========================
+
+{% set title = "foo"|upper %}
+
+---
+
+    (fragment
+      (fragment_statement
+        (statement
+          (set_statement
+            (assignment
+              (identifier)
+              (expression
+                (filter_operator
+                  (string)
+                  (identifier))))))))

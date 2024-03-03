@@ -1,0 +1,30 @@
+=========
+ Integer
+=========
+
+{{ 1 }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(integer))))
+
+=====================
+ Integer with dashes
+=====================
+
+{{ 1_000_000 }}
+
+
+---
+
+(fragment
+(fragment_expression
+(expression
+(integer))))
+
+
+

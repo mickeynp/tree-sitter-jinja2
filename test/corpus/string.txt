@@ -1,0 +1,64 @@
+===============
+ Simple String
+===============
+{{ "moocow" }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (string))))
+
+
+=================
+ Callable string
+=================
+
+{{ "foo {0}".format("bar") }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (call
+            (attribute
+              (string)
+              (identifier))
+            (argument_list
+              (expression
+                (string)))))))
+
+
+=================
+ Printf-style string
+=================
+
+{{ "foo %s" % bar }}
+
+---
+
+    (fragment
+      (fragment_expression
+        (expression
+          (binary_operator
+            (string)
+            (identifier)))))
+
+
+===================
+ Multi-line string
+===================
+
+{{ "foo
+
+
+bar" }}
+
+---
+
+(fragment
+      (fragment_expression
+        (expression
+          (string))))
